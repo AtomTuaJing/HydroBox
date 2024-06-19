@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "645377494972",
+    "project_id": "hydrobox-65f85",
+    "storage_bucket": "hydrobox-65f85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645377494972:android:613b5d17a1e9826ddda5b9",
+        "android_client_info": {
+          "package_name": "com.example.hydrobox"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJM6A9QuQKbjwUYzHGVG2Xlh0oOcq6a8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
