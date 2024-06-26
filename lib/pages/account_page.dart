@@ -30,12 +30,12 @@ class AccountPage extends StatelessWidget {
           Stack(
             children: [
               // top image
-              Image.asset("assets/top.png", width: 360, height: 205),
+              Image.asset("assets/top5.png"),
 
               // hello user
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 60),
                 child: Row(
                   children: [
                     // user profile

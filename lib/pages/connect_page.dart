@@ -42,18 +42,19 @@ class _ConnectPageState extends State<ConnectPage> {
       body: Column(
         children: [
           // top
-          Image.asset("assets/top2.png"),
+          Image.asset("assets/top4.png"),
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 20),
                 // would you like to connect text
                 Text(
                     "Would you like to connect HydroBox with your current account?",
                     style: GoogleFonts.urbanist(
-                        fontSize: 19,
+                        fontSize: 24,
                         fontWeight: FontWeight.w900,
                         color: ColorsAsset.darkGray)),
 
@@ -61,8 +62,8 @@ class _ConnectPageState extends State<ConnectPage> {
 
                 // connect graphic
                 Container(
-                  width: 324,
-                  height: 194,
+                  width: double.infinity,
+                  height: 300,
                   decoration: BoxDecoration(
                       color: ColorsAsset.gray,
                       borderRadius: BorderRadius.circular(12)),
@@ -71,13 +72,14 @@ class _ConnectPageState extends State<ConnectPage> {
                     children: [
                       // HydroBox graphic
                       SizedBox(
-                        width: 120,
+                        width: 200,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             // graphic
-                            Image.asset("assets/hydrobox.png",
-                                width: 115, height: 98),
+                            Image.asset(
+                              "assets/hydrobox.png",
+                            ),
 
                             // HydroBox
                             SizedBox(
@@ -97,14 +99,16 @@ class _ConnectPageState extends State<ConnectPage> {
 
                       // account graphic
                       SizedBox(
-                        width: 120,
+                        width: 200,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            const SizedBox(height: 20),
                             // graphic
-                            const Icon(Icons.account_circle_outlined, size: 90),
+                            const Icon(Icons.account_circle_outlined,
+                                size: 120),
 
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 30),
 
                             // username
                             SizedBox(
@@ -123,7 +127,7 @@ class _ConnectPageState extends State<ConnectPage> {
                   ),
                 ),
 
-                const SizedBox(height: 240),
+                const SizedBox(height: 100),
 
                 // connect button
                 GestureDetector(
@@ -194,8 +198,10 @@ class _ConnectPageState extends State<ConnectPage> {
                       await context
                           .read<BLEProvider>()
                           .writeCharacteristic!
-                          .write(utf8.encode(
-                              context.read<PlantProvider>().selectedPlant!));
+                          .write(utf8.encode(context
+                              .read<PlantProvider>()
+                              .selectedPlant!
+                              .toUpperCase()));
 
                       Navigator.pop(context);
                       Navigator.pop(context);

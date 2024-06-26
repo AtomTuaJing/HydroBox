@@ -87,123 +87,125 @@ class _ScanQrCodePageState extends State<ScanQrCodePage> {
             style: GoogleFonts.urbanist(
                 fontSize: 20, fontWeight: FontWeight.w900)),
       ),
-      body: Column(
-        children: [
-          // top
-          Image.asset("assets/top2.png"),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // top
+            Image.asset("assets/top4.png"),
 
-          const SizedBox(height: 20),
+            const SizedBox(height: 20),
 
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              children: [
-                // scan instructions
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                      color: ColorsAsset.gray,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Column(
-                    children: [
-                      // Scan QR Code
-                      Text("Scan QR Code",
-                          style: GoogleFonts.urbanist(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w900,
-                              color: ColorsAsset.dark)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Column(
+                children: [
+                  // scan instructions
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                        color: ColorsAsset.gray,
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Column(
+                      children: [
+                        // Scan QR Code
+                        Text("Scan QR Code",
+                            style: GoogleFonts.urbanist(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w900,
+                                color: ColorsAsset.dark)),
 
-                      // instructions
-                      Text(
-                          "Scan QR Code on HydroBox’s \nScreen to connect to the HydroBox.",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.urbanist(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w900,
-                              color: ColorsAsset.darkGray))
-                    ],
+                        // instructions
+                        Text(
+                            "Scan QR Code on HydroBox’s \nScreen to connect to the HydroBox.",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.urbanist(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w900,
+                                color: ColorsAsset.darkGray))
+                      ],
+                    ),
                   ),
-                ),
 
-                const SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
-                // scan camera
-                scanState == false
-                    ? Container(
-                        width: double.infinity,
-                        height: 265,
-                        decoration: BoxDecoration(
-                            color: ColorsAsset.gray,
-                            borderRadius: BorderRadius.circular(12)),
-                        child: Expanded(
-                          child: QRView(
-                            key: qrKey,
-                            onQRViewCreated: onQRViewCreated,
-                          ),
-                        ),
-                      )
-                    : Container(
-                        width: double.infinity,
-                        height: 265,
-                        decoration: BoxDecoration(
-                            color: ColorsAsset.darkGray,
-                            borderRadius: BorderRadius.circular(12)),
-                      ),
-
-                const SizedBox(height: 70),
-
-                // scan button
-
-                scanState == false
-                    ? GestureDetector(
-                        onTap: () {
-                          controller!.pauseCamera();
-                          setState(() {
-                            scanState = true;
-                          });
-                        },
-                        child: Container(
+                  // scan camera
+                  scanState == false
+                      ? Container(
                           width: double.infinity,
-                          height: 50,
+                          height: 450,
                           decoration: BoxDecoration(
-                              color: ColorsAsset.red,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Center(
-                            child: Text("Stop Scan",
-                                style: GoogleFonts.urbanist(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.white)),
+                              color: ColorsAsset.gray,
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Expanded(
+                            child: QRView(
+                              key: qrKey,
+                              onQRViewCreated: onQRViewCreated,
+                            ),
                           ),
-                        ),
-                      )
-                    : GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            scanState = false;
-                          });
-                          controller!.resumeCamera();
-                        },
-                        child: Container(
+                        )
+                      : Container(
                           width: double.infinity,
-                          height: 50,
+                          height: 450,
                           decoration: BoxDecoration(
-                              color: ColorsAsset.primary,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Center(
-                            child: Text("Scan",
-                                style: GoogleFonts.urbanist(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.white)),
-                          ),
+                              color: ColorsAsset.darkGray,
+                              borderRadius: BorderRadius.circular(12)),
                         ),
-                      )
-              ],
-            ),
-          )
-        ],
+
+                  const SizedBox(height: 10),
+
+                  // scan button
+
+                  scanState == false
+                      ? GestureDetector(
+                          onTap: () {
+                            controller!.pauseCamera();
+                            setState(() {
+                              scanState = true;
+                            });
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: ColorsAsset.red,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(
+                              child: Text("Stop Scan",
+                                  style: GoogleFonts.urbanist(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.white)),
+                            ),
+                          ),
+                        )
+                      : GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              scanState = false;
+                            });
+                            controller!.resumeCamera();
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: ColorsAsset.primary,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(
+                              child: Text("Scan",
+                                  style: GoogleFonts.urbanist(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.white)),
+                            ),
+                          ),
+                        )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -5,7 +5,12 @@ import 'package:hydrobox/utils/color_asset.dart';
 class MyPlot extends StatefulWidget {
   final String plantType;
   final String seedingMode;
-  const MyPlot({super.key, required this.plantType, required this.seedingMode});
+  final String boxNumber;
+  const MyPlot(
+      {super.key,
+      required this.boxNumber,
+      required this.plantType,
+      required this.seedingMode});
 
   @override
   State<MyPlot> createState() => _MyPlotState();
@@ -26,7 +31,7 @@ class _MyPlotState extends State<MyPlot> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // box number
-              Text("Box 1",
+              Text("Box ${widget.boxNumber}",
                   style: GoogleFonts.urbanist(
                       fontSize: 20,
                       fontWeight: FontWeight.w900,

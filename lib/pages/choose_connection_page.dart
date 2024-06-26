@@ -18,99 +18,101 @@ class ChooseConnectionPage extends StatelessWidget {
             style: GoogleFonts.urbanist(
                 fontSize: 20, fontWeight: FontWeight.w900)),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // top
-          Image.asset("assets/top2.png"),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // top
+            Image.asset("assets/top4.png"),
 
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // connect via
-                SizedBox(
-                  width: double.infinity,
-                  child: Text("Connect Via",
-                      style: GoogleFonts.urbanist(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w900,
-                          color: ColorsAsset.primary)),
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // connect via
+                  SizedBox(
+                    width: double.infinity,
+                    child: Text("Connect Via",
+                        style: GoogleFonts.urbanist(
+                            fontSize: 32,
+                            fontWeight: FontWeight.w900,
+                            color: ColorsAsset.primary)),
+                  ),
 
-                const SizedBox(height: 25),
+                  const SizedBox(height: 25),
 
-                // bluetooth button
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const BluetoothScanningPage()));
-                  },
-                  child: Container(
-                    width: 266,
-                    height: 226,
-                    decoration: BoxDecoration(
-                        color: ColorsAsset.primary,
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // icon
-                        const Icon(Icons.bluetooth,
-                            size: 100, color: Colors.white),
+                  // bluetooth button
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const BluetoothScanningPage()));
+                    },
+                    child: Container(
+                      width: 266,
+                      height: 226,
+                      decoration: BoxDecoration(
+                          color: ColorsAsset.primary,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // icon
+                          const Icon(Icons.bluetooth,
+                              size: 100, color: Colors.white),
 
-                        // bluetooth
-                        Text("Bluetooth",
-                            style: GoogleFonts.urbanist(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w900,
-                                color: Colors.white))
-                      ],
+                          // bluetooth
+                          Text("Bluetooth",
+                              style: GoogleFonts.urbanist(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white))
+                        ],
+                      ),
                     ),
                   ),
-                ),
 
-                const SizedBox(height: 25),
+                  const SizedBox(height: 25),
 
-                // qr code button
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ScanQrCodePage()));
-                  },
-                  child: Container(
-                    width: 266,
-                    height: 226,
-                    decoration: BoxDecoration(
-                        color: ColorsAsset.primary,
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // icon
-                        const Icon(Icons.qr_code_2,
-                            size: 100, color: Colors.white),
+                  // qr code button
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ScanQrCodePage()));
+                    },
+                    child: Container(
+                      width: 266,
+                      height: 226,
+                      decoration: BoxDecoration(
+                          color: ColorsAsset.primary,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // icon
+                          const Icon(Icons.qr_code_2,
+                              size: 100, color: Colors.white),
 
-                        // bluetooth
-                        Text("QR Code",
-                            style: GoogleFonts.urbanist(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w900,
-                                color: Colors.white))
-                      ],
+                          // bluetooth
+                          Text("QR Code",
+                              style: GoogleFonts.urbanist(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white))
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

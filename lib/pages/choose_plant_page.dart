@@ -539,164 +539,166 @@ class _ChoosePlantPageState extends State<ChoosePlantPage> {
                                                           content: StatefulBuilder(
                                                               builder: (context,
                                                                   setState) {
-                                                            return SingleChildScrollView(
-                                                              child: Column(
-                                                                children: [
-                                                                  // profile selector
-                                                                  GestureDetector(
-                                                                    onTap:
-                                                                        () async {
-                                                                      final returnedImage =
-                                                                          await ImagePicker()
-                                                                              .pickImage(source: ImageSource.gallery);
+                                                            return SizedBox(
+                                                              width: 500,
+                                                              height: 500,
+                                                              child:
+                                                                  SingleChildScrollView(
+                                                                child: Column(
+                                                                  children: [
+                                                                    // profile selector
+                                                                    GestureDetector(
+                                                                      onTap:
+                                                                          () async {
+                                                                        final returnedImage =
+                                                                            await ImagePicker().pickImage(source: ImageSource.gallery);
 
-                                                                      if (returnedImage ==
-                                                                          null) {
-                                                                        return;
-                                                                      }
+                                                                        if (returnedImage ==
+                                                                            null) {
+                                                                          return;
+                                                                        }
 
-                                                                      setState(
-                                                                          () {
-                                                                        profileController =
-                                                                            File(returnedImage.path);
-                                                                      });
-                                                                    },
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          100,
-                                                                      height:
-                                                                          100,
-                                                                      padding: const EdgeInsets
-                                                                          .all(
-                                                                          15),
-                                                                      decoration: BoxDecoration(
-                                                                          shape: BoxShape
-                                                                              .circle,
-                                                                          color:
-                                                                              Colors.grey[300]),
-                                                                      child: profileController !=
-                                                                              null
-                                                                          ? Image.file(
-                                                                              profileController!)
-                                                                          : const Icon(
-                                                                              Icons.image_search_rounded,
-                                                                              size: 20),
+                                                                        setState(
+                                                                            () {
+                                                                          profileController =
+                                                                              File(returnedImage.path);
+                                                                        });
+                                                                      },
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            200,
+                                                                        height:
+                                                                            200,
+                                                                        padding: const EdgeInsets
+                                                                            .all(
+                                                                            15),
+                                                                        decoration: BoxDecoration(
+                                                                            shape:
+                                                                                BoxShape.circle,
+                                                                            color: Colors.grey[300]),
+                                                                        child: profileController !=
+                                                                                null
+                                                                            ? Image.file(
+                                                                                profileController!)
+                                                                            : const Icon(Icons.image_search_rounded,
+                                                                                size: 20),
+                                                                      ),
                                                                     ),
-                                                                  ),
 
-                                                                  const SizedBox(
-                                                                      height:
-                                                                          10),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            10),
 
-                                                                  // name text field
-                                                                  MyTextField(
-                                                                      hintText:
-                                                                          "Plant Name",
-                                                                      iconData:
-                                                                          Icons
-                                                                              .data_object,
-                                                                      controller:
-                                                                          plantNameController,
-                                                                      obscureText:
-                                                                          false),
+                                                                    // name text field
+                                                                    MyTextField(
+                                                                        hintText:
+                                                                            "Plant Name",
+                                                                        iconData:
+                                                                            Icons
+                                                                                .data_object,
+                                                                        controller:
+                                                                            plantNameController,
+                                                                        obscureText:
+                                                                            false),
 
-                                                                  const SizedBox(
-                                                                      height:
-                                                                          10),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            10),
 
-                                                                  // description text field
-                                                                  MyTextField(
-                                                                      hintText:
-                                                                          "Plant Description",
-                                                                      iconData:
-                                                                          Icons
-                                                                              .description,
-                                                                      controller:
-                                                                          plantDescriptionController,
-                                                                      obscureText:
-                                                                          false),
+                                                                    // description text field
+                                                                    MyTextField(
+                                                                        hintText:
+                                                                            "Plant Description",
+                                                                        iconData:
+                                                                            Icons
+                                                                                .description,
+                                                                        controller:
+                                                                            plantDescriptionController,
+                                                                        obscureText:
+                                                                            false),
 
-                                                                  const SizedBox(
-                                                                      height:
-                                                                          10),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            10),
 
-                                                                  // seeding time
-                                                                  MyTextField(
-                                                                      hintText:
-                                                                          "Seeding Time",
-                                                                      iconData:
-                                                                          Icons
-                                                                              .timelapse_outlined,
-                                                                      controller:
-                                                                          seedingTimeController,
-                                                                      obscureText:
-                                                                          false),
+                                                                    // seeding time
+                                                                    MyTextField(
+                                                                        hintText:
+                                                                            "Seeding Time",
+                                                                        iconData:
+                                                                            Icons
+                                                                                .timelapse_outlined,
+                                                                        controller:
+                                                                            seedingTimeController,
+                                                                        obscureText:
+                                                                            false),
 
-                                                                  const SizedBox(
-                                                                      height:
-                                                                          10),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            10),
 
-                                                                  // planting time
-                                                                  MyTextField(
-                                                                      hintText:
-                                                                          "Planting Time",
-                                                                      iconData:
-                                                                          Icons
-                                                                              .timelapse_outlined,
-                                                                      controller:
-                                                                          plantingTimeController,
-                                                                      obscureText:
-                                                                          false),
+                                                                    // planting time
+                                                                    MyTextField(
+                                                                        hintText:
+                                                                            "Planting Time",
+                                                                        iconData:
+                                                                            Icons
+                                                                                .timelapse_outlined,
+                                                                        controller:
+                                                                            plantingTimeController,
+                                                                        obscureText:
+                                                                            false),
 
-                                                                  const SizedBox(
-                                                                      height:
-                                                                          10),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            10),
 
-                                                                  // ph
-                                                                  MyTextField(
-                                                                      hintText:
-                                                                          "pH Value",
-                                                                      iconData:
-                                                                          Icons
-                                                                              .gas_meter_outlined,
-                                                                      controller:
-                                                                          pHValueController,
-                                                                      obscureText:
-                                                                          false),
+                                                                    // ph
+                                                                    MyTextField(
+                                                                        hintText:
+                                                                            "pH Value",
+                                                                        iconData:
+                                                                            Icons
+                                                                                .gas_meter_outlined,
+                                                                        controller:
+                                                                            pHValueController,
+                                                                        obscureText:
+                                                                            false),
 
-                                                                  const SizedBox(
-                                                                      height:
-                                                                          10),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            10),
 
-                                                                  // temp
-                                                                  MyTextField(
-                                                                      hintText:
-                                                                          "Temp Value",
-                                                                      iconData:
-                                                                          Icons
-                                                                              .device_thermostat_outlined,
-                                                                      controller:
-                                                                          tempController,
-                                                                      obscureText:
-                                                                          false),
+                                                                    // temp
+                                                                    MyTextField(
+                                                                        hintText:
+                                                                            "Temp Value",
+                                                                        iconData:
+                                                                            Icons
+                                                                                .device_thermostat_outlined,
+                                                                        controller:
+                                                                            tempController,
+                                                                        obscureText:
+                                                                            false),
 
-                                                                  const SizedBox(
-                                                                      height:
-                                                                          10),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            10),
 
-                                                                  // tds
-                                                                  MyTextField(
-                                                                      hintText:
-                                                                          "Tds Value",
-                                                                      iconData:
-                                                                          Icons
-                                                                              .electric_meter_outlined,
-                                                                      controller:
-                                                                          tdsController,
-                                                                      obscureText:
-                                                                          false),
-                                                                ],
+                                                                    // tds
+                                                                    MyTextField(
+                                                                        hintText:
+                                                                            "Tds Value",
+                                                                        iconData:
+                                                                            Icons
+                                                                                .electric_meter_outlined,
+                                                                        controller:
+                                                                            tdsController,
+                                                                        obscureText:
+                                                                            false),
+                                                                  ],
+                                                                ),
                                                               ),
                                                             );
                                                           }),

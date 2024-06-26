@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hydrobox/components/my_plot.dart';
 import 'package:hydrobox/pages/choose_plant_page.dart';
 import 'package:hydrobox/pages/plot_detail_page.dart';
+import 'package:hydrobox/pages/plot_detail_page2.dart';
 import 'package:hydrobox/services/ble_provider.dart';
 import 'package:hydrobox/utils/color_asset.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // top
-          Image.asset("assets/top2.png"),
+          Image.asset("assets/top4.png"),
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -70,42 +71,59 @@ class _HomePageState extends State<HomePage> {
                         height: 450,
                         child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: 1 + 1,
+                          itemCount: 2 + 1,
                           itemBuilder: (context, index) {
-                            return (index != 1)
-                                ? GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PlotDetailPage()));
-                                    },
-                                    child: StreamBuilder(
-                                        stream: context
-                                            .read<BLEProvider>()
-                                            .notify3Characteristic!
-                                            .onValueReceived,
-                                        builder: (context, snapshot) {
-                                          if (snapshot.hasData) {
-                                            var data =
-                                                utf8.decode(snapshot.data!);
-                                            var splitedData = data.split("/");
-                                            return MyPlot(
-                                              seedingMode:
-                                                  splitedData[0] == "M-0"
-                                                      ? "Seeding Mode"
-                                                      : "Growing Mode",
-                                              plantType: splitedData[1],
-                                            );
-                                          } else {
-                                            return Center(
-                                                child:
-                                                    CircularProgressIndicator(
-                                                        color: ColorsAsset
-                                                            .primary));
-                                          }
-                                        }))
+                            return (index != 2)
+                                ? (index != 1)
+                                    ? GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PlotDetailPage()));
+                                        },
+                                        child: StreamBuilder(
+                                            stream: context
+                                                .read<BLEProvider>()
+                                                .notify3Characteristic!
+                                                .onValueReceived,
+                                            builder: (context, snapshot) {
+                                              if (snapshot.hasData) {
+                                                var data =
+                                                    utf8.decode(snapshot.data!);
+                                                var splitedData =
+                                                    data.split("/");
+                                                return MyPlot(
+                                                  boxNumber:
+                                                      (index + 1).toString(),
+                                                  seedingMode:
+                                                      splitedData[0] == "M-0"
+                                                          ? "Seeding Mode"
+                                                          : "Growing Mode",
+                                                  plantType: splitedData[1],
+                                                );
+                                              } else {
+                                                return Center(
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                            color: ColorsAsset
+                                                                .primary));
+                                              }
+                                            }))
+                                    : GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PlotDetailPage2()));
+                                        },
+                                        child: MyPlot(
+                                          boxNumber: (index + 1).toString(),
+                                          seedingMode: "Growing Mode",
+                                          plantType: "Green Lettuce",
+                                        ))
                                 : GestureDetector(
                                     onTap: () {
                                       Navigator.push(

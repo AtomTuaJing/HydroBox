@@ -84,7 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // top
-              Image.asset("assets/top.png"),
+              Image.asset("assets/top2.png", width: double.infinity),
 
               // body
               Padding(

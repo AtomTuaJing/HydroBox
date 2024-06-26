@@ -23,7 +23,7 @@ class MyPlant extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 328,
+      width: double.infinity,
       height: 115,
       margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.all(20),

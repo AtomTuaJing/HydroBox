@@ -40,13 +40,13 @@ class PlantDetailPage extends StatelessWidget {
       decoration: BoxDecoration(
           image: addImg
               ? DecorationImage(
-                  alignment: Alignment.topCenter,
+                  alignment: Alignment.center,
                   image: NetworkImage(addImgPath),
-                  fit: BoxFit.contain)
+                  fit: BoxFit.cover)
               : DecorationImage(
-                  alignment: Alignment.topCenter,
+                  alignment: Alignment.center,
                   image: AssetImage(imgPath),
-                  fit: BoxFit.contain)),
+                  fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -98,7 +98,7 @@ class PlantDetailPage extends StatelessWidget {
                   // detail
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 15, right: 15, top: 60),
+                        const EdgeInsets.only(left: 15, right: 15, top: 120),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -146,7 +146,7 @@ class PlantDetailPage extends StatelessWidget {
                                 color: ColorsAsset.darkGray,
                                 height: 1.8)),
 
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 100),
 
                         // select
                         GestureDetector(
@@ -166,7 +166,7 @@ class PlantDetailPage extends StatelessWidget {
                           },
                           child: Container(
                             width: double.infinity,
-                            height: 45,
+                            height: 65,
                             decoration: BoxDecoration(
                                 color: ColorsAsset.primary,
                                 borderRadius: BorderRadius.circular(50)),
