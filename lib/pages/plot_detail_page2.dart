@@ -16,7 +16,7 @@ class PlotDetailPage2 extends StatelessWidget {
           centerTitle: true,
           foregroundColor: Colors.white,
           backgroundColor: ColorsAsset.primary,
-          title: Text("Box 1",
+          title: Text("Box 2",
               style: GoogleFonts.urbanist(
                   fontWeight: FontWeight.w900, color: Colors.white)),
           actions: [
@@ -146,7 +146,18 @@ class PlotDetailPage2 extends StatelessWidget {
                                 style: GoogleFonts.urbanist(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w900,
-                                    color: ColorsAsset.primary))
+                                    color: ColorsAsset.primary)),
+                            const SizedBox(width: 40),
+                            Text("Plant Status: ",
+                                style: GoogleFonts.urbanist(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w900,
+                                    color: Colors.black)),
+                            Text("8 / 8",
+                                style: GoogleFonts.urbanist(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w900,
+                                    color: ColorsAsset.primary)),
                           ],
                         )
                       ],

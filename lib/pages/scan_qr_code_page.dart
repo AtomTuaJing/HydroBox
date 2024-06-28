@@ -29,7 +29,8 @@ class _ScanQrCodePageState extends State<ScanQrCodePage> {
   void onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) async {
-      if (scanData.code!.contains("HydroBox")) {
+      if (scanData.code!.contains(
+          "K1*364cfb1f-278a-4fdd-ab28-ecb0076aa431*bfe9fba8-28a5-49f0-a96d-12e53a27b76d")) {
         showDialog(
             context: context,
             builder: (context) => Center(

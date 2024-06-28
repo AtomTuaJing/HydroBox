@@ -6,8 +6,16 @@ import 'package:hydrobox/services/ble_provider.dart';
 import 'package:hydrobox/utils/color_asset.dart';
 import 'package:provider/provider.dart';
 
-class PlotDetailPage extends StatelessWidget {
+class PlotDetailPage extends StatefulWidget {
   const PlotDetailPage({super.key});
+
+  @override
+  State<PlotDetailPage> createState() => _PlotDetailPageState();
+}
+
+class _PlotDetailPageState extends State<PlotDetailPage> {
+  // plant status
+  int plantStatus = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +228,27 @@ class PlotDetailPage extends StatelessWidget {
                                                                       FontWeight
                                                                           .w900,
                                                                   color: ColorsAsset
-                                                                      .primary))
+                                                                      .primary)),
+                                                      const SizedBox(width: 40),
+                                                      Text("Plant Status: ",
+                                                          style: GoogleFonts
+                                                              .urbanist(
+                                                                  fontSize: 12,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w900,
+                                                                  color: ColorsAsset
+                                                                      .primary)),
+                                                      Text("$plantStatus / 8",
+                                                          style: GoogleFonts
+                                                              .urbanist(
+                                                                  fontSize: 12,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w900,
+                                                                  color:
+                                                                      ColorsAsset
+                                                                          .red)),
                                                     ],
                                                   )
                                                 ],
