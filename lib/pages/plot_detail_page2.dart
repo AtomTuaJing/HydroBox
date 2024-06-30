@@ -17,11 +17,14 @@ class PlotDetailPage2 extends StatefulWidget {
 class _PlotDetailPage2State extends State<PlotDetailPage2> {
   // video controller
   late VideoPlayerController controller;
+  late Future<void> initializeVideoPlayerFuture;
 
   @override
   void initState() {
     super.initState();
-    controller = VideoPlayerController.asset("assets/HydroBox.mp4");
+    controller = VideoPlayerController.networkUrl(Uri.parse(
+        "https://github.com/AtomTuaJing/HydroBox/blob/main/assets/HydroBox.mp4"));
+    initializeVideoPlayerFuture = controller.initialize();
   }
 
   @override
@@ -73,20 +76,29 @@ class _PlotDetailPage2State extends State<PlotDetailPage2> {
                       children: [
                         // image
                         Container(
-                          width: double.infinity,
-                          height: 350,
-                          clipBehavior: Clip.hardEdge,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12)),
-                          child: VideoPlayer(controller),
-                          // child: controller.value.isInitialized
-                          //     ? AspectRatio(
-                          //         aspectRatio: controller.value.aspectRatio,
-                          //         child: VideoPlayer(controller))
-                          //     : Center(
-                          //         child: CircularProgressIndicator(
-                          //             color: ColorsAsset.primary))
-                        ),
+                            width: double.infinity,
+                            height: 350,
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12)),
+                            child: FutureBuilder(
+                              future: initializeVideoPlayerFuture,
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.done) {
+                                  controller.play();
+                                  return AspectRatio(
+                                    aspectRatio: controller.value.aspectRatio,
+                                    child: VideoPlayer(controller),
+                                  );
+                                } else {
+                                  return Center(
+                                    child: CircularProgressIndicator(
+                                        color: ColorsAsset.primary),
+                                  );
+                                }
+                              },
+                            )),
 
                         const SizedBox(height: 5),
 
