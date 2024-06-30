@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hydrobox/firebase_options.dart';
+import 'package:hydrobox/pages/plot_detail_page2.dart';
 import 'package:hydrobox/services/auth.dart';
 import 'package:hydrobox/services/ble_provider.dart';
 import 'package:hydrobox/services/plant_provider.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Authentication(),
+      home: PlotDetailPage2(),
     );
   }
 }

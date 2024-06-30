@@ -5,9 +5,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hydrobox/services/ble_provider.dart';
 import 'package:hydrobox/utils/color_asset.dart';
 import 'package:provider/provider.dart';
+import 'package:video_player/video_player.dart';
 
-class PlotDetailPage2 extends StatelessWidget {
+class PlotDetailPage2 extends StatefulWidget {
   const PlotDetailPage2({super.key});
+
+  @override
+  State<PlotDetailPage2> createState() => _PlotDetailPage2State();
+}
+
+class _PlotDetailPage2State extends State<PlotDetailPage2> {
+  // video controller
+  late VideoPlayerController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = VideoPlayerController.asset("assets/HydroBox.mp4");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,28 +73,20 @@ class PlotDetailPage2 extends StatelessWidget {
                       children: [
                         // image
                         Container(
-                            width: double.infinity,
-                            height: 350,
-                            clipBehavior: Clip.hardEdge,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/icons/wifi_off.svg",
-                                  width: 60,
-                                  colorFilter: ColorFilter.mode(
-                                      ColorsAsset.darkGray, BlendMode.srcIn),
-                                ),
-                                Text("No Wifi Connection",
-                                    style: GoogleFonts.urbanist(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900,
-                                        color: ColorsAsset.darkGray))
-                              ],
-                            )),
+                          width: double.infinity,
+                          height: 350,
+                          clipBehavior: Clip.hardEdge,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12)),
+                          child: VideoPlayer(controller),
+                          // child: controller.value.isInitialized
+                          //     ? AspectRatio(
+                          //         aspectRatio: controller.value.aspectRatio,
+                          //         child: VideoPlayer(controller))
+                          //     : Center(
+                          //         child: CircularProgressIndicator(
+                          //             color: ColorsAsset.primary))
+                        ),
 
                         const SizedBox(height: 5),
 
@@ -228,7 +235,7 @@ class PlotDetailPage2 extends StatelessWidget {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     // data
-                                                    Text("23°C",
+                                                    Text("--°C",
                                                         style: GoogleFonts
                                                             .urbanist(
                                                                 fontSize: 24,
@@ -278,7 +285,7 @@ class PlotDetailPage2 extends StatelessWidget {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     // data
-                                                    Text("21°C",
+                                                    Text("--°C",
                                                         style: GoogleFonts
                                                             .urbanist(
                                                                 fontSize: 24,
@@ -336,7 +343,7 @@ class PlotDetailPage2 extends StatelessWidget {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     // data
-                                                    Text("6.7",
+                                                    Text("--",
                                                         style: GoogleFonts
                                                             .urbanist(
                                                                 fontSize: 24,
@@ -386,7 +393,7 @@ class PlotDetailPage2 extends StatelessWidget {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     // data
-                                                    Text("43.8",
+                                                    Text("--",
                                                         style: GoogleFonts
                                                             .urbanist(
                                                                 fontSize: 24,
@@ -444,7 +451,7 @@ class PlotDetailPage2 extends StatelessWidget {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     // data
-                                                    Text("87",
+                                                    Text("--",
                                                         style: GoogleFonts
                                                             .urbanist(
                                                                 fontSize: 24,
@@ -498,7 +505,7 @@ class PlotDetailPage2 extends StatelessWidget {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     // data
-                                                    Text("Growing",
+                                                    Text("--",
                                                         style: GoogleFonts
                                                             .urbanist(
                                                                 fontSize: 24,
@@ -746,5 +753,11 @@ class PlotDetailPage2 extends StatelessWidget {
             ),
           )
         ])));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }
