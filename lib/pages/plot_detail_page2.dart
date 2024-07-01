@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -5,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hydrobox/services/ble_provider.dart';
 import 'package:hydrobox/utils/color_asset.dart';
 import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
 
 class PlotDetailPage2 extends StatefulWidget {
   const PlotDetailPage2({super.key});
@@ -15,16 +15,40 @@ class PlotDetailPage2 extends StatefulWidget {
 }
 
 class _PlotDetailPage2State extends State<PlotDetailPage2> {
-  // video controller
-  late VideoPlayerController controller;
-  late Future<void> initializeVideoPlayerFuture;
+  int currentIndex = 0;
+  late Timer _timer;
+
+  // image arrays
+  List<String> images = [
+    "assets/images/1.png",
+    "assets/images/2.png",
+    "assets/images/3.png",
+    "assets/images/4.png",
+    "assets/images/5.png",
+    "assets/images/6.png",
+    "assets/images/7.png",
+    "assets/images/8.png",
+    "assets/images/9.png"
+  ];
 
   @override
   void initState() {
+    startImageTimer();
     super.initState();
-    controller = VideoPlayerController.networkUrl(Uri.parse(
-        "https://github.com/AtomTuaJing/HydroBox/blob/main/assets/HydroBox.mp4"));
-    initializeVideoPlayerFuture = controller.initialize();
+  }
+
+  void startImageTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
+      setState(() {
+        currentIndex = (currentIndex + 1) % images.length;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override
@@ -81,24 +105,7 @@ class _PlotDetailPage2State extends State<PlotDetailPage2> {
                             clipBehavior: Clip.hardEdge,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12)),
-                            child: FutureBuilder(
-                              future: initializeVideoPlayerFuture,
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.done) {
-                                  controller.play();
-                                  return AspectRatio(
-                                    aspectRatio: controller.value.aspectRatio,
-                                    child: VideoPlayer(controller),
-                                  );
-                                } else {
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                        color: ColorsAsset.primary),
-                                  );
-                                }
-                              },
-                            )),
+                            child: Image.asset(images[currentIndex])),
 
                         const SizedBox(height: 5),
 
@@ -765,11 +772,5 @@ class _PlotDetailPage2State extends State<PlotDetailPage2> {
             ),
           )
         ])));
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 }
